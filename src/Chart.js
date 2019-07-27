@@ -1,9 +1,9 @@
 import React, { Component } from 'react'
-import * as d3config from './d3config'
 import * as d3 from 'd3'
 import './index.css'
 import CanSelect from './CanSelect'
 import axios from 'axios'
+import d3Tip from 'd3-tip'
 
 const api = process.env.REACT_APP_GOV_API || process.env.GOV_API
 
@@ -54,22 +54,20 @@ export class Chart extends Component {
     }
 
     buildBar = data => {
-        const margin = { top: 10, right: 20, bottom: 30, left: 30 }
-
-        const width = 1000
-        const height = 700
+        const width = 1200
+        const height = 800
 
         const svg = d3
             .select('#holder')
             .append('svg')
-            .attr('width', width)
-            .attr('height', height)
-            .attr('viewBox', '0 0 ' + (width - 400) + ' ' + (height - 100))
+            // .attr('width', width)
+            // .attr('height', height)
+            .attr('viewBox', '0 0 ' + width + ' ' + height)
             .attr('perserveAspectRatio', 'xMinYMid')
             .append('g')
             .attr(
                 'transform',
-                'translate(' + width / 2 + ', ' + height / 2 + ')'
+                'translate(' + width / 1.75 + ', ' + height / 2 + ')'
             )
 
         console.log(this.state.data)
@@ -79,20 +77,23 @@ export class Chart extends Component {
             .range(['#ed5565', '#f8ac59', '#23c6c8', '#1ab394', '#1c84c6'])
             .domain(data, d => d.size)
 
-        let radius = Math.min(d3config.maxChartWidth, d3config.svgHeight) / 2
+        let radius = Math.min(width, height) / 2
         let iRadius = radius * 0.3
-        let scaleORadius = d3
-            .scaleLinear()
-            .range([0, d3.max(d => d.total)])
-            .domain([0, data])
 
-        let tooltip = d3
-            .select('body')
-            .append('div')
+        let tooltip = d3Tip()
             .attr('id', 'tooltip')
-            .style('opacity', 0)
+            .offset([0, 0])
             .attr('class', 'tooltip')
-            .style('position', 'absolute')
+            .html(
+                d =>
+                    'Total Donations: $' +
+                    data.total +
+                    '</br>' +
+                    '# of Donations in Category: ' +
+                    data.count
+            )
+
+        svg.call(tooltip)
 
         let pie = d3
             .pie()
@@ -104,44 +105,6 @@ export class Chart extends Component {
             .innerRadius(iRadius)
             .outerRadius(radius)
 
-        let arc = d3
-            .arc()
-            .innerRadius(iRadius)
-            .outerRadius(d => (radius - iRadius) * (d.total / 100.0) + iRadius)
-
-        let path = svg
-            .selectAll('path')
-            .data(pie(data))
-            .enter()
-            .append('path')
-            .attr('fill', (d, i) => color[i])
-            .attr('class', '.arc')
-            .attr('stroke', '#5a5a5a')
-            .attr('d', arc)
-            .on('mouseover', d => {
-                tooltip
-                    .transition()
-                    .duration(200)
-                    .style('opacity', '1')
-                    .style('pointer-events', 'none')
-                tooltip
-                    .html(
-                        'Total Donations: $' +
-                            d.total.replace(/\B(?=(\d{3})+(?!\d))/g, ',') +
-                            '</br>' +
-                            'Number of Donations in Size Category: ' +
-                            d.count
-                    )
-                    .style('left', d3.event.pageX + 100)
-                    .style('top', d3.event.pageY + 25)
-                    .on('mouseout', (d, i) => {
-                        tooltip
-                            .transition()
-                            .duration(250)
-                            .style('opacity', '0')
-                    })
-            })
-
         let outerPath = svg
             .selectAll('.oArc')
             .data(pie(data))
@@ -149,8 +112,10 @@ export class Chart extends Component {
             .append('path')
             .attr('fill', (d, i) => color(i))
             .attr('stroke', '#5a5a5a')
-            .attr('class', '.oArc')
+            .attr('class', 'oArc')
             .attr('d', outlineArc)
+            .on('mouseover', tooltip.show)
+            .on('mouseout', tooltip.hide)
 
         let cats = [
             '< $200',
@@ -165,7 +130,13 @@ export class Chart extends Component {
             .domain(cats)
             .range(['#ed5565', '#f8ac59', '#23c6c8', '#1ab394', '#1c84c6'])
 
-        let legend = d3.select('#legend')
+        let legend = d3
+            .select('#legend')
+            .append('g')
+            .attr(
+                'transform',
+                'translate(' + width / 2 + ', ' + height / 1.5 + ')'
+            )
 
         let numOfRows = 1
 

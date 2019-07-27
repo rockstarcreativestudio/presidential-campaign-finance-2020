@@ -7,13 +7,11 @@ class ChartContain extends Component {
             <div>
                 <section>
                     <div className="row bg-secondary chartrow">
-                        <div className="container">
-                            <div
-                                id="chartbox"
-                                className="bg-white shadow-lg mx-auto"
-                            >
-                                <Chart />
-                            </div>
+                        <div
+                            id="chartbox"
+                            className="bg-white shadow-lg mx-auto"
+                        >
+                            <Chart />
                         </div>
                     </div>
                 </section>
