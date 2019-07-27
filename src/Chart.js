@@ -200,9 +200,7 @@ export class Chart extends Component {
                         Data Loading . . .{' '}
                     </h3>
                 ) : (
-                    <div id="holder">
-                        <svg id="chart" className="chart svg-content" />
-                    </div>
+                    <div id="holder" />
                 )}
                 {this.state.isLoading ? null : (
                     <div>
