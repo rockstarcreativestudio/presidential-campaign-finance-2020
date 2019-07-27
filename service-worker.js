@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  "/presidential-campaign-finance-2020/precache-manifest.eef4e25423fef9fb2a7cffe94c52f114.js"
+  "/presidential-campaign-finance-2020/precache-manifest.04380e335fa3478289dd9215a3a9cf39.js"
 );
 
 self.addEventListener('message', (event) => {
