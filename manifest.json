@@ -1,0 +1,8 @@
+{
+    "short_name": "Presidential Candidates",
+    "name": "Presidential Candidates Finances - 2020",
+    "start_url": ".",
+    "display": "standalone",
+    "theme_color": "#000000",
+    "background_color": "#ffffff"
+}
