@@ -200,9 +200,9 @@ export class Chart extends Component {
                     <div>
                         <svg
                             id="chart"
-                            className="chart"
-                            width="100%"
-                            height={d3config.svgHeight}
+                            className="chart svg-content"
+                            preserveAspectRatio="xMidYMid meet"
+                            viewBox="0 0 500 500"
                         />
                         <svg id="id" width="100%" height="50px" />
                     </div>
