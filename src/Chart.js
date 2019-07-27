@@ -164,7 +164,7 @@ export class Chart extends Component {
 
         let legend = d3.select('#legend')
 
-        let numofRows = 1
+        let numOfRows = 1
 
         legend
             .selectAll('.legend')
