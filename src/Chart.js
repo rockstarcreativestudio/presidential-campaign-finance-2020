@@ -66,7 +66,6 @@ export class Chart extends Component {
             .attr('height', height + margin.top + margin.bottom)
             .attr('viewBox', '0 0 ' + width + ' ' + height)
             .attr('perserveAspectRatio', 'xMinYMid')
-            .call(responsivefy)
             .append('g')
             .attr(
                 'transform',
