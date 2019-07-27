@@ -66,7 +66,7 @@ export class Chart extends Component {
                     ')'
             )
         function responsify(svg) {
-            const container = d3.select(svg.node.parentNode),
+            const container = d3.select('#holder'),
                 width = parseInt(svg.style('width')),
                 height = parseInt(svg.style('height')),
                 aspect = width / height
@@ -217,8 +217,12 @@ export class Chart extends Component {
                         Data Loading . . .{' '}
                     </h3>
                 ) : (
-                    <div>
+                    <div id="holder">
                         <svg id="chart" className="chart svg-content" />
+                    </div>
+                )}
+                {this.state.isLoading ? null : (
+                    <div>
                         <svg id="legend" width="100%" height="100px" />
                     </div>
                 )}
