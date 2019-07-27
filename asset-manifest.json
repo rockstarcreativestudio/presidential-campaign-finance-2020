@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/presidential-campaign-finance-2020/static/css/main.41954b3a.chunk.css",
-    "main.js": "/presidential-campaign-finance-2020/static/js/main.6187b9de.chunk.js",
-    "main.js.map": "/presidential-campaign-finance-2020/static/js/main.6187b9de.chunk.js.map",
+    "main.css": "/presidential-campaign-finance-2020/static/css/main.d5f5f12f.chunk.css",
+    "main.js": "/presidential-campaign-finance-2020/static/js/main.cf299fc1.chunk.js",
+    "main.js.map": "/presidential-campaign-finance-2020/static/js/main.cf299fc1.chunk.js.map",
     "runtime~main.js": "/presidential-campaign-finance-2020/static/js/runtime~main.1941d807.js",
     "runtime~main.js.map": "/presidential-campaign-finance-2020/static/js/runtime~main.1941d807.js.map",
     "static/js/2.c385d5bc.chunk.js": "/presidential-campaign-finance-2020/static/js/2.c385d5bc.chunk.js",
     "static/js/2.c385d5bc.chunk.js.map": "/presidential-campaign-finance-2020/static/js/2.c385d5bc.chunk.js.map",
     "index.html": "/presidential-campaign-finance-2020/index.html",
-    "precache-manifest.53898e37150c474949a37c52008512aa.js": "/presidential-campaign-finance-2020/precache-manifest.53898e37150c474949a37c52008512aa.js",
+    "precache-manifest.656897846116c530f396e2367e926596.js": "/presidential-campaign-finance-2020/precache-manifest.656897846116c530f396e2367e926596.js",
     "service-worker.js": "/presidential-campaign-finance-2020/service-worker.js",
-    "static/css/main.41954b3a.chunk.css.map": "/presidential-campaign-finance-2020/static/css/main.41954b3a.chunk.css.map"
+    "static/css/main.d5f5f12f.chunk.css.map": "/presidential-campaign-finance-2020/static/css/main.d5f5f12f.chunk.css.map"
   }
 }
