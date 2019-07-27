@@ -80,11 +80,11 @@ export class Chart extends Component {
             .domain(data, d => d.size)
 
         let radius = Math.min(d3config.maxChartWidth, d3config.svgHeight) / 2
-        let iRadisu = radius * 0.3
+        let iRadius = radius * 0.3
         let scaleORadius = d3
             .scaleLinear()
             .range([0, d3.max(d => d.total)])
-            .domain([0, d3.max(data)])
+            .domain([0, data])
 
         let tooltip = d3
             .select('body')
@@ -101,13 +101,13 @@ export class Chart extends Component {
 
         let outlineArc = d3
             .arc()
-            .innerRadius(iRadisu)
+            .innerRadius(iRadius)
             .outerRadius(radius)
 
         let arc = d3
             .arc()
-            .innerRadius(iRadisu)
-            .outerRadius(d => scaleORadius(d.total))
+            .innerRadius(iRadius)
+            .outerRadius(d => (radius - iRadius) * (d.total / 100.0) + iRadius)
 
         let path = svg
             .selectAll('path')
