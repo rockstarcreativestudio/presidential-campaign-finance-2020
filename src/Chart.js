@@ -56,8 +56,8 @@ export class Chart extends Component {
     buildBar = data => {
         const margin = { top: 10, right: 20, bottom: 30, left: 30 }
 
-        const width = 1000 - margin.left - margin.right
-        const height = 700 - margin.top - margin.bottom
+        const width = 1000
+        const height = 700
 
         const svg = d3
             .select('#holder')
