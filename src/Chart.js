@@ -107,7 +107,7 @@ export class Chart extends Component {
             .style('position', 'absolute')
 
         d3.select('#chart')
-            .attr('width', 960)
+            .attr('width', 500)
             .attr('height', 500)
             .call(responsify)
 
