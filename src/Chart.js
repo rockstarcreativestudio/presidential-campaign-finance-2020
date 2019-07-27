@@ -64,34 +64,14 @@ export class Chart extends Component {
             .append('svg')
             .attr('width', width + margin.left + margin.right)
             .attr('height', height + margin.top + margin.bottom)
+            .attr('viewBox', '0 0 ' + width + ' ' + height)
+            .attr('perserveAspectRatio', 'xMinYMid')
             .call(responsivefy)
             .append('g')
             .attr(
                 'transform',
-                'translate(' +
-                    d3config.maxChartWidth / 2 +
-                    ',' +
-                    d3config.svgHeight / 2 +
-                    ')'
+                'translate(' + width / 2 + ',' + height / 2 + ')'
             )
-        function responsivefy(svg) {
-            const container = d3.select('#holder'),
-                width = parseInt(svg.style('width')),
-                height = parseInt(svg.style('height')),
-                aspect = width / height
-
-            svg.attr('viewBox', '0 0 ' + width + ' ' + height)
-                .attr('perserveAspectRatio', 'xMinYMid')
-                .call(resize)
-
-            d3.select(window).on('resize.' + container.attr('id'), resize)
-
-            function resize() {
-                const targetWidth = parseInt(container.style('width'))
-                svg.attr('width', targetWidth)
-                svg.attr('height', Math.round(targetWidth / aspect))
-            }
-        }
 
         console.log(this.state.data)
 
