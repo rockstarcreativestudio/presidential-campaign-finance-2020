@@ -5,7 +5,7 @@ import * as d3 from 'd3'
 import CanSelect from './CanSelect'
 import axios from 'axios'
 
-const api = process.env.GOV_API
+const api = process.env.REACT_APP_GOV_API || process.env.GOV_API
 
 export class Chart extends Component {
     constructor(props) {

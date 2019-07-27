@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import axios from 'axios'
 
-const api = process.env.GOV_API
+const api = process.env.REACT_APP_GOV_API || process.env.GOV_API
 
 class CanSelect extends Component {
     constructor(props) {
