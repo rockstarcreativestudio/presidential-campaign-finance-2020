@@ -1,19 +1,19 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "a51bfd00e03586564d37f75923d7ab26",
+    "revision": "960c04a86cbcb17775bbd6a1a7120340",
     "url": "/presidential-campaign-finance-2020/index.html"
   },
   {
-    "revision": "1f4a1d90c36e2e4f6fb8",
+    "revision": "c0def5a8a4c2963c5cde",
     "url": "/presidential-campaign-finance-2020/static/css/main.d1e4ef6e.chunk.css"
   },
   {
-    "revision": "4d55e68433f5c68f5b5d",
-    "url": "/presidential-campaign-finance-2020/static/js/2.576c3599.chunk.js"
+    "revision": "9b8e7dbd19ec304418d1",
+    "url": "/presidential-campaign-finance-2020/static/js/2.4bbf10c1.chunk.js"
   },
   {
-    "revision": "1f4a1d90c36e2e4f6fb8",
-    "url": "/presidential-campaign-finance-2020/static/js/main.b229b2cb.chunk.js"
+    "revision": "c0def5a8a4c2963c5cde",
+    "url": "/presidential-campaign-finance-2020/static/js/main.c582beaf.chunk.js"
   },
   {
     "revision": "94eb7ce273629d4a94a5",
