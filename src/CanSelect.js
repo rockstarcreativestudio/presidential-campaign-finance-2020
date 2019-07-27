@@ -18,11 +18,15 @@ class CanSelect extends Component {
                 console.log(json)
 
                 let names = json
-                    .map(({ name, party }) => ({
-                        name,
-                        party,
-                    }))
-                    .sort((a, b) => (a.name > b.name ? 1 : -1))
+                    .map((d, i) => {
+                        let name = d.name
+                            .split(',')
+                            .reverse()
+                            .join(' ')
+                        let party = d.party
+                        return name + ' - ' + party
+                    })
+                    .sort()
 
                 let select = document.getElementById('prez')
                 select.options.length = 0
