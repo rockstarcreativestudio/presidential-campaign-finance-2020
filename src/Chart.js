@@ -54,8 +54,17 @@ export class Chart extends Component {
     }
 
     buildBar = data => {
-        const g = d3
-            .select('#chart')
+        const margin = { top: 10, right: 20, bottom: 30, left: 30 }
+
+        const width = 400 - margin.left - margin.right
+        const height = 400 - margin.top - margin.bottom
+
+        const svg = d3
+            .select('#holder')
+            .append('svg')
+            .attr('width', width + margin.left + margin.right)
+            .attr('height', height + margin.top + margin.bottom)
+            .call(responsivefy)
             .append('g')
             .attr(
                 'transform',
@@ -106,12 +115,6 @@ export class Chart extends Component {
             .attr('class', 'tooltip')
             .style('position', 'absolute')
 
-        d3.select('#holder')
-            .append('svg')
-            .attr('width', 500)
-            .attr('height', 500)
-            .call(responsify)
-
         let pie = d3
             .pie()
             .value(d => d.total)
@@ -127,7 +130,7 @@ export class Chart extends Component {
             .innerRadius(iRadisu)
             .outerRadius(d => scaleORadius(d.total))
 
-        let path = g
+        let path = svg
             .selectAll('path')
             .data(pie(data))
             .enter()
@@ -160,7 +163,7 @@ export class Chart extends Component {
                     })
             })
 
-        let outerPath = g
+        let outerPath = svg
             .selectAll('.oArc')
             .data(pie(data))
             .enter()
