@@ -67,7 +67,10 @@ export class Chart extends Component {
             .attr('viewBox', '0 0 ' + (width - 400) + ' ' + (height - 100))
             .attr('perserveAspectRatio', 'xMinYMid')
             .append('g')
-            .attr('transform', 'translate(250, 100)')
+            .attr(
+                'transform',
+                'translate(' + width / 2 + ', ' + height / 2 + ')'
+            )
 
         console.log(this.state.data)
 
