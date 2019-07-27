@@ -1,0 +1,16 @@
+{
+  "addons": [
+
+  ],
+  "buildpacks": [
+
+  ],
+  "env": {
+  },
+  "formation": {
+  },
+  "name": "Presidential-Camp-Finance-2020",
+  "scripts": {
+  },
+  "stack": "heroku-18"
+}
