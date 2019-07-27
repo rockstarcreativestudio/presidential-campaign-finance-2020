@@ -1,68 +1,47 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Live Data Visualization of Current Presendential Candidates Donations - 2020
 
-## Available Scripts
+> This project is a personal app to display presidential candidates donation data, from the FEC API, for the 2020 election.
 
-In the project directory, you can run:
+<hr />
 
-### `npm start`
+## Table of Contents
 
-Runs the app in the development mode.<br>
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+-   [Dependencies](#depend)
+-   [About The Project](#about)
+-   [Support](#support)
+-   [License](#license)
 
-The page will reload if you make edits.<br>
-You will also see any lint errors in the console.
+<hr>
 
-### `npm test`
+<img width="350" src="https://raw.githubusercontent.com/rockstarcreativestudio/presidential-campaign-finance-2020/master/screenshot-rockstarcreativestudio.github.io-2019.07.27-09-35-21.png" />
 
-Launches the test runner in the interactive watch mode.<br>
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+# <a name="depend"></a>Dependencies
 
-### `npm run build`
+-   Create React App
+-   GH-Pages
+-   BootstrapCSS
+-   Axios
+-   Dotenv
+-   D3js
 
-Builds the app for production to the `build` folder.<br>
-It correctly bundles React in production mode and optimizes the build for the best performance.
+<hr>
 
-The build is minified and the filenames include the hashes.<br>
-Your app is ready to be deployed!
+# <a name="about"></a> About the Project
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+This project was a personal project that I have been wanting to build since learning D3js and APIs. I found the Data.gov API service, which opened up a whole world of data that I could tap into. Considering the upcoming election, this was top of my list. I had to solve CORS issues with sending API info, plus integrating D3, that directly manipulates DOM, with ReactJS, which renders DOM on state change. This was certainly a big leap for me, integrating what I've learned in a cohesive app.
 
-### `npm run eject`
+I have plans to add more financial information, leading up to a big visualization that mixes Congress voting records to with donation records. Watch this repo for updates.
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+## [Check out the live project.](https://rockstarcreativestudio.github.io/presidential-campaign-finance-2020/)
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+<hr>
 
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+# <a name="support"></a>Support
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+Notice an issue with this app? [Leave a ticket here](https://github.com/rockstarcreativestudio/presidential-campaign-finance-2020/issues)
 
-## Learn More
+<hr>
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+# <a name="license"></a>License
 
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `npm run build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+-   [MIT License](http://opensource.org/licenses/mit-license.php)
