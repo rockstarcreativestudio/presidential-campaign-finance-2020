@@ -222,7 +222,7 @@ export class Chart extends Component {
                 ) : (
                     <div>
                         <svg id="chart" className="chart svg-content" />
-                        <svg id="id" width="100%" height="100px" />
+                        <svg id="legend" width="100%" height="100px" />
                     </div>
                 )}
             </div>
