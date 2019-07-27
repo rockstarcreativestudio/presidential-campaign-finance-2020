@@ -56,21 +56,17 @@ export class Chart extends Component {
     buildBar = data => {
         const margin = { top: 10, right: 20, bottom: 30, left: 30 }
 
-        const width = 400 - margin.left - margin.right
-        const height = 400 - margin.top - margin.bottom
+        const width = 1000 - margin.left - margin.right
+        const height = 700 - margin.top - margin.bottom
 
         const svg = d3
             .select('#holder')
             .append('svg')
-            .attr('width', width + margin.left + margin.right)
-            .attr('height', height + margin.top + margin.bottom)
-            .attr('viewBox', '0 0 ' + width + ' ' + height)
+            .attr('width', width)
+            .attr('height', height)
+            .attr('viewBox', '0 0 ' + (width - 400) + ' ' + (height - 100))
             .attr('perserveAspectRatio', 'xMinYMid')
             .append('g')
-            .attr(
-                'transform',
-                'translate(' + width / 2 + ',' + height / 2 + ')'
-            )
 
         console.log(this.state.data)
 
