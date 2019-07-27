@@ -126,8 +126,8 @@ export class Chart extends Component {
                             'Number of Donations in Size Category: ' +
                             d.count
                     )
-                    .style('left', d3.event.pageX + 20)
-                    .style('top', d3.event.pageY - 10)
+                    .style('left', d3.event.pageX + 100)
+                    .style('top', d3.event.pageY + 25)
                     .on('mouseout', (d, i) => {
                         tooltip
                             .transition()
@@ -162,25 +162,17 @@ export class Chart extends Component {
         let size = 15
         let space = 10
 
-        let legend = g
+        let legend = d3.select('#legend')
+
+        let numofRows = 1
+
+        legend
             .selectAll('.legend')
             .data(lColor.domain())
             .enter()
-            .append('g')
-            .attr('id', 'legend')
-            .attr('class', 'legend')
-            .attr('transform', function(d, i) {
-                let height = size + space + 5
-                let offset = height + lColor.domain().length / 2
-                let horz = 12 * height
-                let vert = i * height + offset
-                return 'translate(' + horz + ',' + vert + ')'
-            })
-
-        legend
             .append('circle')
-            .attr('cx', size)
-            .attr('cy', size)
+            .attr('cx', (d, i) => (i % numOfRows) * 100)
+            .attr('cy', (d, i) => parseInt(i / numOfRows) * 50)
             .attr('r', 7)
             .style('fill', d => lColor(d))
             .style('stroke', d => lColor(d))
@@ -188,8 +180,8 @@ export class Chart extends Component {
 
         legend
             .append('text')
-            .attr('x', size + space)
-            .attr('y', size + space)
+            .attr('x', (d, i) => (i % numOfRows) * 100)
+            .attr('y', (d, i) => parseInt(i / numOfRows) * 50 + 40)
             .text(d => d)
             .style('line-height', '1.5em')
             .attr('text-anchor', 'left')
@@ -205,12 +197,15 @@ export class Chart extends Component {
                         Data Loading . . .{' '}
                     </h3>
                 ) : (
-                    <svg
-                        id="chart"
-                        className="chart"
-                        width="100%"
-                        height={d3config.svgHeight}
-                    />
+                    <div>
+                        <svg
+                            id="chart"
+                            className="chart"
+                            width="100%"
+                            height={d3config.svgHeight}
+                        />
+                        <svg id="id" width="100%" height="50px" />
+                    </div>
                 )}
             </div>
         )
