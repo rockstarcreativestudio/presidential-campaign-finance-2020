@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import * as d3config from './d3config'
 import * as d3 from 'd3'
-// import buildChart from './d3file'
+import './index.css'
 import CanSelect from './CanSelect'
 import axios from 'axios'
 
@@ -204,7 +204,7 @@ export class Chart extends Component {
                             preserveAspectRatio="xMidYMid meet"
                             viewBox="0 0 500 500"
                         />
-                        <svg id="id" width="100%" height="50px" />
+                        <svg id="id" width="100%" height="100px" />
                     </div>
                 )}
             </div>
