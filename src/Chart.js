@@ -66,7 +66,7 @@ export class Chart extends Component {
                     ')'
             )
         function responsify(svg) {
-            const container = d3.select(svg.node().parentNode),
+            const container = d3.select(svg.node.parentNode),
                 width = parseInt(svg.style('width')),
                 height = parseInt(svg.style('height')),
                 aspect = width / height
@@ -181,9 +181,6 @@ export class Chart extends Component {
             .scaleOrdinal()
             .domain(cats)
             .range(['#ed5565', '#f8ac59', '#23c6c8', '#1ab394', '#1c84c6'])
-
-        let size = 15
-        let space = 10
 
         let legend = d3.select('#legend')
 
