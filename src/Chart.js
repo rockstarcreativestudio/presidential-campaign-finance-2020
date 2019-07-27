@@ -74,7 +74,7 @@ export class Chart extends Component {
                     d3config.svgHeight / 2 +
                     ')'
             )
-        function responsify(svg) {
+        function responsivefy(svg) {
             const container = d3.select('#holder'),
                 width = parseInt(svg.style('width')),
                 height = parseInt(svg.style('height')),
