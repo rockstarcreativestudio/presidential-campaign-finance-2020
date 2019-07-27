@@ -30,9 +30,10 @@ export class Chart extends Component {
             .then(resp => {
                 let finances = resp.data.results
                 let totals = finances
-                    .map(({ size, total }) => ({
+                    .map(({ size, total, count }) => ({
                         size,
                         total,
+                        count,
                     }))
                     .sort((a, b) => (a.size > b.size ? 1 : -1))
                 this.setState({
@@ -79,6 +80,14 @@ export class Chart extends Component {
             .range([0, d3.max(d => d.total)])
             .domain([0, d3.max(data)])
 
+        let tooltip = d3
+            .select('body')
+            .append('div')
+            .attr('id', 'tooltip')
+            .style('opacity', 0)
+            .attr('class', 'tooltip')
+            .style('position', 'absolute')
+
         let pie = d3
             .pie()
             .value(d => d.total)
@@ -103,6 +112,29 @@ export class Chart extends Component {
             .attr('class', '.arc')
             .attr('stroke', '#5a5a5a')
             .attr('d', arc)
+            .on('mouseover', d => {
+                tooltip
+                    .transition()
+                    .duration(200)
+                    .style('opacity', '1')
+                    .style('pointer-events', 'none')
+                tooltip
+                    .html(
+                        'Total Donations: $' +
+                            d.total.replace(/\B(?=(\d{3})+(?!\d))/g, ',') +
+                            '</br>' +
+                            'Number of Donations in Size Category: ' +
+                            d.count
+                    )
+                    .style('left', d3.event.pageX + 20)
+                    .style('top', d3.event.pageY - 10)
+                    .on('mouseout', (d, i) => {
+                        tooltip
+                            .transition()
+                            .duration(250)
+                            .style('opacity', '0')
+                    })
+            })
 
         let outerPath = g
             .selectAll('.oArc')
