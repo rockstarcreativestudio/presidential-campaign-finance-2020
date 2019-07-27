@@ -65,6 +65,24 @@ export class Chart extends Component {
                     d3config.svgHeight / 2 +
                     ')'
             )
+        function responsify(svg) {
+            const container = d3.select(svg.node().parentNode),
+                width = parseInt(svg.style('width')),
+                height = parseInt(svg.style('height')),
+                aspect = width / height
+
+            svg.attr('viewBox', '0 0 ' + width + ' ' + height)
+                .attr('perserveAspectRatio', 'xMinYMid')
+                .call(resize)
+
+            d3.select(window).on('resize.' + container.attr('id'), resize)
+
+            function resize() {
+                const targetWidth = parseInt(container.style('width'))
+                svg.attr('width', targetWidth)
+                svg.attr('height', Math.round(targetWidth / aspect))
+            }
+        }
 
         console.log(this.state.data)
 
@@ -87,6 +105,11 @@ export class Chart extends Component {
             .style('opacity', 0)
             .attr('class', 'tooltip')
             .style('position', 'absolute')
+
+        d3.select('#chart')
+            .attr('width', 960)
+            .attr('height', 500)
+            .call(responsify)
 
         let pie = d3
             .pie()
@@ -198,12 +221,7 @@ export class Chart extends Component {
                     </h3>
                 ) : (
                     <div>
-                        <svg
-                            id="chart"
-                            className="chart svg-content"
-                            preserveAspectRatio="xMidYMid meet"
-                            viewBox="0 0 500 500"
-                        />
+                        <svg id="chart" className="chart svg-content" />
                         <svg id="id" width="100%" height="100px" />
                     </div>
                 )}
