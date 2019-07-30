@@ -24,7 +24,7 @@ export class Chart extends Component {
         })
         axios({
             method: 'GET',
-            url: `https://api.open.fec.gov/v1/committee/${prez}/schedules/schedule_a/by_size/?per_page=20&cycle=2020&page=1&sort_hide_null=false&sort=-cycle&api_key=${api}&sort_null_only=false&sort_nulls_last=false
+            url: `https://api.open.fec.gov/v1/committee/${prez}/schedules/schedule_a/by_size/?per_page=20&cycle=2020&page=1&sort_hide_null=false&sort=-cycle&api_key=${api}&sort_null_only=false&sort_nulls_last=true
                         `,
         })
             .then(resp => {
@@ -54,8 +54,8 @@ export class Chart extends Component {
     }
 
     buildBar = data => {
-        const width = 1200
-        const height = 800
+        const width = 1000
+        const height = 600
 
         const svg = d3
             .select('#holder')
@@ -75,22 +75,24 @@ export class Chart extends Component {
         const color = d3
             .scaleOrdinal()
             .range(['#ed5565', '#f8ac59', '#23c6c8', '#1ab394', '#1c84c6'])
-            .domain(data, d => d.size)
+            .domain((d, i) => this.state.data[i].count)
 
         let radius = Math.min(width, height) / 2
         let iRadius = radius * 0.3
 
         let tooltip = d3Tip()
             .attr('id', 'tooltip')
-            .offset([0, 0])
+            .offset([100, 0])
             .attr('class', 'tooltip')
             .html(
-                d =>
+                (d, i) =>
                     'Total Donations: $' +
-                    data.total +
-                    '</br>' +
+                    this.state.data[i].total +
+                    '<br />' +
                     '# of Donations in Category: ' +
-                    data.count
+                    (!this.state.data[i].count ? 0 : this.state.data[i].count) +
+                    '<br />' +
+                    this.state.data[i].size
             )
 
         svg.call(tooltip)
@@ -130,36 +132,20 @@ export class Chart extends Component {
             .domain(cats)
             .range(['#ed5565', '#f8ac59', '#23c6c8', '#1ab394', '#1c84c6'])
 
+        let cell = 10
+        let w = 300
+        let h = 75
+        let numofCol = 5
+
         let legend = d3
             .select('#legend')
-            .append('g')
-            .attr(
-                'transform',
-                'translate(' + width / 2 + ', ' + height / 1.5 + ')'
-            )
-
-        let numOfRows = 1
-
-        legend
-            .selectAll('.legend')
-            .data(lColor.domain())
-            .enter()
-            .append('circle')
-            .attr('cx', (d, i) => (i % numOfRows) * 100)
-            .attr('cy', (d, i) => parseInt(i / numOfRows) * 50)
-            .attr('r', 7)
-            .style('fill', d => lColor(d))
-            .style('stroke', d => lColor(d))
-            .style('alignment-baseline', 'bottom')
-
-        legend
-            .append('text')
-            .attr('x', (d, i) => (i % numOfRows) * 100)
-            .attr('y', (d, i) => parseInt(i / numOfRows) * 50 + 40)
-            .text(d => d)
-            .style('line-height', '1.5em')
-            .attr('text-anchor', 'left')
-            .style('alignment-baseline', 'top')
+            .append('svg')
+            .attr('viewBox', '0 0 ' + w + ' ' + h)
+            .attr('perserveAspectRatio', 'xMinYMid')
+        // .attr(
+        //     'transform',
+        //     'translate(' + w / 2.25 + ', ' + -height / 1.25 + ')'
+        // )
     }
 
     render() {
@@ -172,11 +158,6 @@ export class Chart extends Component {
                     </h3>
                 ) : (
                     <div id="holder" />
-                )}
-                {this.state.isLoading ? null : (
-                    <div>
-                        <svg id="legend" width="100%" height="100px" />
-                    </div>
                 )}
             </div>
         )

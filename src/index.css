@@ -1,6 +1,5 @@
 .chartrow {
     width: 100%;
-    min-height: 100vh;
     padding: 0;
     margin: 0;
 }
@@ -16,7 +15,7 @@
 
 #holder {
     width: 90%;
-    height: 900px;
+    height: 700px;
     margin: 0;
 }
 
@@ -25,10 +24,6 @@
     fill: none;
     stroke: #000;
     shape-rendering: crispEdges;
-}
-
-.bar {
-    fill: orange;
 }
 
 .oArc:hover {
@@ -46,6 +41,34 @@
     display: none;
 }
 
+#legend {
+    width: 500px;
+    height: 125px;
+    margin: 0 auto;
+}
+
+circle {
+    padding-left: 5%;
+}
+
+#legend .tick line {
+    fill: none;
+    stroke: none;
+}
+
+#legend path {
+    display: none;
+}
+
+.legText {
+    font-size: 12px;
+    transform: rotate(85deg);
+}
+
 .tooltip {
     background-color: #fff;
+}
+
+#footer {
+    margin: 0;
 }
