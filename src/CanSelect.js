@@ -16,7 +16,6 @@ class CanSelect extends Component {
             .then(resp => {
                 let json = resp.data.results
                 console.log(json)
-
                 let names = json
                     .map((d, i) => {
                         let name = d.name
@@ -24,16 +23,20 @@ class CanSelect extends Component {
                             .reverse()
                             .join(' ')
                         let party = d.party
-                        return name + ' - ' + party
+                        let value = d.principal_committees[0].committee_id
+                        let obj = {}
+                        obj.name = name + ' - ' + party
+                        obj.value = value
+                        return obj
                     })
-                    .sort()
+                    .sort((a, b) => (a.name > b.name ? 1 : -1))
 
                 let select = document.getElementById('prez')
                 select.options.length = 0
                 names.forEach((d, i) => {
                     select.options[select.options.length] = new Option(
-                        names[i],
-                        json[i].principal_committees[0].committee_id
+                        names[i].name,
+                        names[i].value
                     )
                 })
             })
